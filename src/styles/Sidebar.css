@@ -24,6 +24,19 @@
   transition: transform 0.3s ease;
 }
 
+.sidebar-logo img.logo-image {
+  width: 65px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the logo */
+  transition: transform 0.3s ease; 
+}
+
+/* Hover effect */
+.sidebar-logo:hover img.logo-image {
+  transform: scale(1.3); /* Zoom in by 10% */
+}
+
 /* Sidebar Logo */
 .sidebar-logo a {
   text-decoration: none;

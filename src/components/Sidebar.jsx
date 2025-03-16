@@ -21,6 +21,13 @@ const Sidebar = () => {
 
   const currentThemeClass = pageThemes[location.pathname] || pageThemes['/'];
 
+  // Dynamically determine the logo based on the current route
+  const getLogoForPage = () => {
+    const page = location.pathname.slice(1); // Remove the leading slash
+    const logoName = page ? `${page}_logo.png` : 'home_logo.png'; // Default to home_logo.png for the root path
+    return `/media/${logoName}`; // Path to the logo in the public/media folder
+  };
+
   const navItems = [
     { path: "/", icon: <FaHome />, text: "Home" },
     { path: "/about", icon: <FaUser />, text: "About" },
@@ -56,7 +63,13 @@ const Sidebar = () => {
 
   // Handle link clicks (force page reload)
   const handleLinkClick = (path) => {
-    window.location.href = path; // Force full page reload
+    if (location.pathname === path) {
+      // If already on the same page, force a reload
+      window.location.reload();
+    } else {
+      // Navigate to the new page
+      window.location.href = path;
+    }
   };
 
   return (
@@ -65,7 +78,16 @@ const Sidebar = () => {
       {!isMobile && (
         <nav className={`sidebar ${currentThemeClass}`}>
           <div className="sidebar-logo">
-            <Link to="/">MW</Link>
+            <Link 
+              to="/" 
+              onClick={() => handleLinkClick("/")} // Handle logo click
+            >
+              <img 
+                src={getLogoForPage()} 
+                alt="Logo" 
+                className="logo-image" 
+              />
+            </Link>
           </div>
           <ul className="sidebar-links">
             {navItems.map((item, index) => (
