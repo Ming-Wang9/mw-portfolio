@@ -1,0 +1,237 @@
+/* Contact.css */
+.contact-page {
+  background-color: #377494; /* Contact page background color */
+  min-height: 100%; /* Ensure it covers the full viewport height */
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0 2rem; /* Adding padding for smaller screens */
+  position: relative; /* Ensure the image is positioned correctly */
+  z-index: 0; /* Background layer */
+}
+
+.contact-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #377494; /* Same as main background */
+  z-index: -1; 
+}
+
+
+.contact-image {
+  position: absolute;
+  top: 0; /* Position at the top */
+  width: 100%;
+  height: 70vh; /* Adjust height as needed */
+  overflow: hidden; /* Ensure the image doesn't overflow */
+  z-index: 1; /* Image above the background */
+}
+
+.contact-image img {
+  width: 100%;
+  height: 130%;
+  object-fit: cover; /* Ensure the image covers the area */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 90%); /* Clip the bottom 10% */
+}
+
+/* Gradient overlay to merge image with background */
+.contact-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%; /* Adjust the height of the gradient */
+  background: linear-gradient(
+    to bottom,
+    rgba(55, 116, 148, 0) 0%, /* Fully transparent at the top */
+    rgba(55, 116, 148, 0.4) 40%, /* Start fading earlier */
+    rgba(55, 116, 148, 0.8) 70%, /* Smooth transition in the middle */
+    rgba(55, 116, 148, 1) 100% /* Fully opaque at the bottom (#377494) */
+  );
+  z-index: 2; /* Gradient above the image */
+}
+
+/* Text content */
+.text-zone {
+  width: 100%;
+  max-width: 800px; /* Max width to avoid too large on wider screens */
+  text-align: center; /* Center the text */
+  color: white;
+  z-index: 3; /* Text above image and gradient */
+  position: relative; /* Ensure it's positioned correctly */
+}
+
+.text-zone h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.text-zone p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Contact form container */
+.contact-form {
+  width: 100%;
+  text-align: center; /* Center form */
+  max-width: 600px; /* Restrict max width of the form */
+  margin: 0 auto;
+}
+
+/* Form alignment */
+.contact-form ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Form fields */
+.contact-form li {
+  margin-bottom: 20px;
+  opacity: 0;
+  display: block;
+  clear: both;
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0.2s;
+}
+
+.contact-form li.half {
+  width: 100%; /* Make each field take the full width */
+  margin-right: 0;
+}
+
+/* Input fields and textarea (same style) */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  max-width: 100%; /* Ensure the width is not too wide */
+  border: 0;
+  background-color: #0f4866; /* Message box color */
+  height: 50px; /* Same height as input fields */
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Make the textarea visually consistent with input fields */
+.contact-form textarea {
+  height: 150px; /* Keep the same height for text area */
+  padding: 20px; /* Add some padding inside the textarea */
+  font-weight: bold; /* Make the text bold */
+  resize: vertical; /* Allow the user to resize the box vertically */
+  box-sizing: border-box; /* Include padding in the width/height calculation */
+}
+
+/* Textarea on focus */
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Submit button */
+.contact-form .flat-button {
+  font-size: 16px;
+  font-weight: bold; /* Make the text bold */
+  color: #fff;
+  padding: 14px 30px; /* Larger button */
+  border: 1px solid #115173;
+  background-color: #115173;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+/* Hover effect for button */
+.contact-form .flat-button:hover {
+  background-color: #fff;
+  color: #115173;
+}
+
+/* Override autofill styles that might affect the form inputs */
+.contact-form input:-webkit-autofill, 
+.contact-form textarea:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s !important; /* Prevent autofill styles from changing */
+  background-color: #0f4866 !important; /* Reset background color of autofilled fields */
+  color: #fff !important; /* Ensure the text color stays white */
+}
+
+/* Ensure the input fields and text area don't show hover effect */
+.contact-form input[type="text"]:hover,
+.contact-form input[type="email"]:hover,
+.contact-form textarea:hover {
+  background-color: #0f4866; /* Keep the background the same */
+  color: #fff; 
+  border-color: #0f4866; 
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .text-zone {
+    padding: 10px;
+    width: 70%; /* Allow the form to take more width on smaller screens */
+  }
+
+  .contact-form li.half {
+    width: 80%; /* Stack the form inputs vertically on smaller screens */
+  }
+
+  .contact-form textarea {
+    font-size: 14px;
+    min-height: 80px; /* Adjust the minimum height for smaller screens */
+    max-width: 100%; /* Ensure textarea doesn't overflow */
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further reduce the size of the form and textarea on smaller screens */
+  .text-zone {
+    width: 90%;
+  }
+
+  .contact-form textarea {
+    font-size: 12px;
+    min-height: 60px; /* Further reduce the height of the message box */
+    max-width: 100%; /* Ensure textarea is fully responsive */
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+}
