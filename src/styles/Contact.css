@@ -1,7 +1,7 @@
 /* Contact.css */
 .contact-page {
   background-color: #377494; /* Contact page background color */
-  min-height: 100%; /* Ensure it covers the full viewport height */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
   width: 100%;
   display: flex;
   justify-content: center; /* Center horizontally */
@@ -9,6 +9,7 @@
   padding: 0 2rem; /* Adding padding for smaller screens */
   position: relative; /* Ensure the image is positioned correctly */
   z-index: 0; /* Background layer */
+  overflow: hidden; /* Prevent any overflow */
 }
 
 .contact-page::before {
@@ -22,37 +23,37 @@
   z-index: -1; 
 }
 
-
 .contact-image {
-  position: absolute;
-  top: 0; /* Position at the top */
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 80vh; /* Adjust height as needed */
+  height: 100vh; /* Cover the full viewport height */
   overflow: hidden; /* Ensure the image doesn't overflow */
   z-index: 1; /* Image above the background */
 }
 
 .contact-image img {
   width: 100%;
-  height: 130%;
+  height: 100%;
   object-fit: cover; /* Ensure the image covers the area */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 90%); /* Clip the bottom 10% */
+  object-position: center; /* Center the image */
 }
 
 /* Gradient overlay to merge image with background */
 .contact-image::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 60%; /* Adjust the height of the gradient */
+  height: 100%;
   background: linear-gradient(
     to bottom,
     rgba(55, 116, 148, 0) 0%, /* Fully transparent at the top */
-    rgba(55, 116, 148, 0.4) 50%, /* Start fading earlier */
-    rgba(55, 116, 148, 0.8) 80%, /* Smooth transition in the middle */
-    rgba(55, 116, 148, 1) 100% /* Fully opaque at the bottom (#377494) */
+    rgba(55, 116, 148, 0.2) 50%, /* Subtle fade */
+    rgba(55, 116, 148, 0.4) 80%, /* Slightly stronger fade */
+    rgba(55, 116, 148, 0.6) 100% /* More opaque at the bottom */
   );
   z-index: 2; /* Gradient above the image */
 }
@@ -68,14 +69,15 @@
 }
 
 .text-zone h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
   font-weight: bold;
 }
 
 .text-zone p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
+  font-weight: bold;
 }
 
 /* Contact form container */
@@ -149,7 +151,7 @@
   font-weight: bold; /* Make the text bold */
   color: #fff;
   padding: 14px 30px; /* Larger button */
-  border: 1px solid #115173;
+  border: 3px solid #ffffff;
   background-color: #115173;
   cursor: pointer;
   text-transform: uppercase;
@@ -163,6 +165,7 @@
 .contact-form .flat-button:hover {
   background-color: #fff;
   color: #115173;
+  /* border: 6px solid #115173; */
 }
 
 /* Override autofill styles that might affect the form inputs */
@@ -181,7 +184,6 @@
   color: #fff; 
   border-color: #0f4866; 
 }
-
 
 /* Animations */
 @keyframes fadeInUp {
