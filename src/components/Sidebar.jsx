@@ -11,26 +11,26 @@ const Sidebar = () => {
   const location = useLocation();
 
   const pageThemes = {
-    '/mw-portfolio/': 'sidebar-home', 
-    '/mw-portfolio/about': 'sidebar-about',
-    '/mw-portfolio/contact': 'sidebar-contact',
-    '/mw-portfolio/linkedin': 'sidebar-linkedin',
-    '/mw-portfolio/github': 'sidebar-github',
-    '/mw-portfolio/athletics': 'sidebar-athletics'
+    '/': 'sidebar-home', 
+    '/about': 'sidebar-about',
+    '/contact': 'sidebar-contact',
+    '/linkedin': 'sidebar-linkedin',
+    '/github': 'sidebar-github',
+    '/athletics': 'sidebar-athletics'
   };
 
-  const currentThemeClass = pageThemes[location.pathname] || pageThemes['/mw-portfolio/'];
+  const currentThemeClass = pageThemes[location.pathname] || pageThemes['/'];
 
   const navItems = [
-    { path: "/mw-portfolio/#/", icon: <FaHome />, text: "Home" },
-    { path: "/mw-portfolio/#/about", icon: <FaUser />, text: "About" },
+    { path: "/", icon: <FaHome />, text: "Home" },
+    { path: "/about", icon: <FaUser />, text: "About" },
     { 
       isResume: true, 
       icon: <FaNewspaper />, 
       text: "Resume",
       href: "/media/MingWang_Resume.pdf" 
     },
-    { path: "/mw-portfolio/#/contact", icon: <FaEnvelope />, text: "Contact" },
+    { path: "/contact", icon: <FaEnvelope />, text: "Contact" },
     { 
       isExternal: true, 
       icon: <FaLinkedin />, 
@@ -43,9 +43,10 @@ const Sidebar = () => {
       text: "Github",
       href: "https://github.com/Ming-Wang9"
     },
-    { path: "/mw-portfolio/#/athletics", icon: <TbOlympics />, text: "Athletics" }
+    { path: "/athletics", icon: <TbOlympics />, text: "Athletics" }
   ];
 
+  // Check if the screen is not in full-screen mode
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1280); 
     checkMobile();
@@ -53,13 +54,18 @@ const Sidebar = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Handle link clicks (force page reload)
+  const handleLinkClick = (path) => {
+    window.location.href = path; // Force full page reload
+  };
+
   return (
     <>
       {/* Sidebar for larger screens */}
       {!isMobile && (
         <nav className={`sidebar ${currentThemeClass}`}>
           <div className="sidebar-logo">
-            <Link to="/mw-portfolio">MW</Link>
+            <Link to="/">MW</Link>
           </div>
           <ul className="sidebar-links">
             {navItems.map((item, index) => (
@@ -83,6 +89,7 @@ const Sidebar = () => {
                 ) : (
                   <Link 
                     to={item.path} 
+                    onClick={() => handleLinkClick(item.path)}
                     aria-label={item.text}
                   >
                     {hoveredItem === index ? 
@@ -131,6 +138,7 @@ const Sidebar = () => {
                     key={index}
                     to={item.path}
                     className="mobile-link"
+                    onClick={() => handleLinkClick(item.path)}
                   >
                     {item.text}
                   </Link>
