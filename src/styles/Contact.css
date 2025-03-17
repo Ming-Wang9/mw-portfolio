@@ -201,7 +201,7 @@
 @media (max-width: 768px) {
   .text-zone {
     padding: 10px;
-    width: 70%; /* Allow the form to take more width on smaller screens */
+    width: 70%; 
   }
 
   .contact-form li.half {
