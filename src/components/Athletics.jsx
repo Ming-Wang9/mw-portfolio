@@ -79,7 +79,7 @@ const Athletic = () => {
         <div className="intro-paragraph">
           <p>
             I always have an Olympics dream. I was so close to the Olympics stage... however, I was only a substitute on my team.
-            But nothing is going to stop me from being an adventure and explorer!
+            But nothing is going to stop me from being an adventurer and explorer!
           </p>
         </div>
 
