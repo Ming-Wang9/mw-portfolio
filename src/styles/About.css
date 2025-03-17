@@ -108,11 +108,11 @@
   }
 }
 
-/* About cards */
+/* About cards (unchanged margins) */
 .about-card {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  margin: 6px 0;
+  margin: 6px 0; /* Your original margin */
   padding: 15px;
   width: 45%;
   max-width: 500px;
@@ -121,7 +121,7 @@
   overflow: hidden;
   opacity: 0;
   animation: fly-in 1s ease-out forwards;
-  margin-left: 15%;
+  margin-left: 15%; /* Your original margin */
   backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 2; /* Above the background and fade overlay */
@@ -148,71 +148,71 @@
 
 /* Reduce space between "About Me" heading and paragraph */
 .about-card.about-me-card h2 {
-  margin-bottom: 0px; /* Reduce space below the heading */
+  margin-bottom: 0px; 
 }
 
 .about-card.about-me-card p {
-  margin-top: 0px; /* Reduce space above the paragraph */
+  margin-top: 0px; 
 }
 
 /* Skills card specific styles */
 .about-card.skills-card .about-card-body {
-  padding: 0; /* Remove padding inside the card body */
+  padding: 0; 
 }
 
 .about-card.skills-card .about-card-body h3 {
-  margin-top: -0.8px; /* Reduce space above "Languages" subheading */
-  margin-bottom: 8px; /* Reduce space below "Languages" subheading */
+  margin-top: -0.8px; 
+  margin-bottom: 8px; 
 }
 
 .about-card.skills-card .about-card-body ul {
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  padding: 3;
+  margin: 0; 
 }
 
 .about-card.skills-card .about-card-body li {
-  margin-bottom: 4px; /* Reduce space between list items */
-  padding: 0; /* Remove padding */
-  line-height: 0.9; /* Reduce line height for tighter spacing */
-  list-style-type: disc; /* Remove bullet points if needed */
+  margin-bottom: 4px; 
+  padding: 0; 
+  line-height: 0.9; 
+  list-style-type: disc; 
 }
 
 /* Projects card specific styles */
 .about-card.projects-card .about-card-body {
-  padding: 0; /* Remove padding inside the card body */
+  padding: 0; 
 }
 
 .about-card.projects-card .about-card-body h3 {
-  margin-top: -0.8px; /* Reduce space above "Machine Learning" subheading */
-  margin-bottom: 8px; /* Reduce space below "Machine Learning" subheading */
+  margin-top: -0.8px; 
+  margin-bottom: 8px; 
 }
 
 .about-card.projects-card .about-card-body ul {
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  padding: 2.5; 
+  margin: 0; 
 }
 
 .about-card.projects-card .about-card-body li {
-  margin-bottom: 8px; /* Reduce space between list items */
-  list-style-type: disc; /* Remove bullet points if needed */
+  margin-bottom: 8px; 
+  list-style-type: disc; 
 }
 
 /* Coursework card specific styles */
 .about-card.coursework-card .about-card-body h3 {
-  margin-top: -0.5px; /* Reduce space above "Languages" subheading */
-  margin-bottom: 8px; /* Reduce space below "Languages" subheading */
+  margin-top: -0.5px; 
+  margin-bottom: 8px;
 }
 
 .about-card.coursework-card .about-card-body ul {
-  padding: 0; /* Keep default padding or adjust as needed */
-  margin: 0; /* Keep default margin or adjust as needed */
+  padding: 3; 
+  margin: 0; 
 }
 
 .about-card.coursework-card .about-card-body li {
-  margin-bottom: 4px; /* Keep default spacing or adjust as needed */
-  padding: 0; /* Keep default padding or adjust as needed */
-  line-height: 0.9;
-  list-style-type: disc; /* Remove bullet points if needed */
+  margin-bottom: 4px; 
+  padding: 0; 
+  line-height: 0.9; 
+  list-style-type: disc; 
 }
 
 @keyframes fly-in {
@@ -322,8 +322,7 @@
     width: 100%; /* Full width for smaller screens */
     height: auto; /* Auto height to fit content */
     padding-top: 10%; /* Adjust padding for smaller screens */
-    margin-bottom: 40px; /* Add margin to separate from other content */
-    margin-left: 150px;
+    margin-bottom: 20px; /* Add margin to separate from other content */
     overflow: visible; /* Ensure the cube is not cut off */
   }
 
