@@ -1,316 +1,334 @@
 /* About.css */
 .about-container {
-    background-color: #f68d3d; /* About page background color */
-    min-height: 100vh; /* Ensure it covers the full viewport height */
-    width: 100%;
-    overflow: hidden;
-    position: relative; /* Ensure the image is positioned correctly */
-    z-index: 0; /* Background layer */
-  }
-  
-  /* Ensure the background color extends beyond the viewport */
-  .about-container::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f68d3d; /* Same as main background */
-    z-index: -1; /* Behind everything */
-  }
-  
-  /* Background with diagonal cut and proper fade */
+  background-color: #f68d3d; /* About page background color */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  width: 100%;
+  overflow: auto; /* Allow scrolling */
+  position: relative; /* Ensure the image is positioned correctly */
+  z-index: 0; /* Background layer */
+}
+
+/* Ensure the background color extends beyond the viewport */
+.about-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f68d3d; /* Same as main background */
+  z-index: -1; /* Behind everything */
+}
+
+/* Background with diagonal cut and proper fade */
+.about-background-image {
+  position: fixed;
+  bottom: 0;
+  right: 0; /* Position from right side */
+  width: 70%;
+  height: 100%; /* Ensure the image covers the full height */
+  object-fit: cover; /* Maintain aspect ratio */
+  z-index: -1; /* Behind the background */
+  clip-path: polygon(
+    110% -60%, /* top right corner */
+    100% 40%, /* bottom right corner */
+    60% 100%, /* bottom left corner */
+    0% 100% /* diagonal cut to middle-left */
+  );
+}
+
+/* Gradient overlay for the fade effect */
+.about-background-overlay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    45deg, /* Diagonal gradient to match the clip-path */
+    rgba(246, 141, 61, 0) 50%, /* Transparent closer to the image */
+    rgba(246, 141, 61, 0.2) 60%, /* Start fading earlier */
+    rgba(246, 141, 61, 0.5) 70%, /* More visible towards the middle */
+    rgba(246, 141, 61, 0.8) 80%, /* Strong color near the edge */
+    rgba(246, 141, 61, 1) 95% /* Fully colored at the edge */
+  ),
+  linear-gradient(
+    -135deg, /* Opposite diagonal gradient for two-directional fade */
+    rgba(246, 141, 61, 0) 50%, /* Transparent closer to the image */
+    rgba(246, 141, 61, 0.2) 60%, /* Start fading earlier */
+    rgba(246, 141, 61, 0.5) 70%, /* More visible towards the middle */
+    rgba(246, 141, 61, 0.8) 80%, /* Strong color near the edge */
+    rgba(246, 141, 61, 1) 95% /* Fully colored at the edge */
+  );
+  z-index: 1; /* Above the image but below the content */
+  pointer-events: none; /* Ensure it doesn't block interactions */
+}
+
+/* Ensure full image coverage at the bottom */
+.about-background-image-extension {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50vh; /* Half viewport height to cover the bottom */
+  background-color: #f68d3d; /* Same as main background */
+  z-index: -2; /* Behind everything */
+}
+
+/* Responsive adjustments for the image */
+@media screen and (max-width: 1200px) {
   .about-background-image {
-    position: fixed;
-    bottom: 0;
-    right: 0; /* Position from right side */
-    width: 70%;
-    height: 100%; /* Ensure the image covers the full height */
-    object-fit: cover; /* Maintain aspect ratio */
-    z-index: -1; /* Behind the background */
+    width: 80%; /* Adjust width for smaller screens */
     clip-path: polygon(
-      110% -60%, /* top right corner */
-      100% 40%, /* bottom right corner */
-      60% 100%, /* bottom left corner */
-      0% 100% /* diagonal cut to middle-left */
+      100% 0%, /* top right corner */
+      100% 100%, /* bottom right corner */
+      0% 100%, /* bottom left corner */
+      20% 0% /* diagonal cut to middle-left */
     );
   }
-  
-  /* Gradient overlay for the fade effect */
+
   .about-background-overlay {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 100%;
-    background: linear-gradient(
-      45deg, /* Diagonal gradient to match the clip-path */
-      rgba(246, 141, 61, 0) 50%,    /* Transparent closer to the image */
-      rgba(246, 141, 61, 0.2) 60%,  /* Start fading earlier */
-      rgba(246, 141, 61, 0.5) 70%,  /* More visible towards the middle */
-      rgba(246, 141, 61, 0.8) 80%,  /* Strong color near the edge */
-      rgba(246, 141, 61, 1) 95%     /* Fully colored at the edge */
-    ),
-    linear-gradient(
-      -135deg, /* Opposite diagonal gradient for two-directional fade */
-      rgba(246, 141, 61, 0) 50%,    /* Transparent closer to the image */
-      rgba(246, 141, 61, 0.2) 60%,  /* Start fading earlier */
-      rgba(246, 141, 61, 0.5) 70%,  /* More visible towards the middle */
-      rgba(246, 141, 61, 0.8) 80%,  /* Strong color near the edge */
-      rgba(246, 141, 61, 1) 95%     /* Fully colored at the edge */
+    width: 80%; /* Match the image width */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-background-image {
+    width: 100%; /* Full width for very small screens */
+    clip-path: polygon(
+      100% 0%, /* top right corner */
+      100% 100%, /* bottom right corner */
+      0% 100%, /* bottom left corner */
+      30% 0% /* diagonal cut to middle-left */
     );
-    z-index: 1; /* Above the image but below the content */
-    pointer-events: none; /* Ensure it doesn't block interactions */
   }
-  
-  /* Ensure full image coverage at the bottom */
-  .about-background-image-extension {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 50vh; /* Half viewport height to cover the bottom */
-    background-color: #f68d3d; /* Same as main background */
-    z-index: -2; /* Behind everything */
+
+  .about-background-overlay {
+    width: 100%; /* Match the image width */
   }
-  
-  /* Responsive adjustments for the image */
-  @media screen and (max-width: 1200px) {
-    .about-background-image {
-      width: 80%; /* Adjust width for smaller screens */
-      clip-path: polygon(
-        100% 0%, /* top right corner */
-        100% 100%, /* bottom right corner */
-        0% 100%, /* bottom left corner */
-        20% 0% /* diagonal cut to middle-left */
-      );
-    }
-  
-    .about-background-overlay {
-      width: 80%; /* Match the image width */
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .about-background-image {
-      width: 100%; /* Full width for very small screens */
-      clip-path: polygon(
-        100% 0%, /* top right corner */
-        100% 100%, /* bottom right corner */
-        0% 100%, /* bottom left corner */
-        30% 0% /* diagonal cut to middle-left */
-      );
-    }
-  
-    .about-background-overlay {
-      width: 100%; /* Match the image width */
-    }
-  }
-  
-  /* About cards (unchanged) */
-  .about-card {
-    background: rgba(255, 255, 255, 0.2); 
-    border-radius: 10px;
-    margin: 6px 0;
-    padding: 15px;
-    width: 45%; 
-    max-width: 500px;
-    box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
-    position: relative;
-    overflow: hidden;
+}
+
+/* About cards */
+.about-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 6px 0;
+  padding: 15px;
+  width: 45%;
+  max-width: 500px;
+  box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fly-in 1s ease-out forwards;
+  margin-left: 15%;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2; /* Above the background and fade overlay */
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the card */
+.about-card:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Card Header */
+.about-card-header {
+  padding: 0.5px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  background: transparent;
+}
+
+/* Reduce space between "About Me" heading and paragraph */
+.about-card.about-me-card h2 {
+  margin-bottom: 0px; /* Reduce space below the heading */
+}
+
+.about-card.about-me-card p {
+  margin-top: 0px; /* Reduce space above the paragraph */
+}
+
+/* Skills card specific styles */
+.about-card.skills-card .about-card-body {
+  padding: 0; /* Remove padding inside the card body */
+}
+
+.about-card.skills-card .about-card-body h3 {
+  margin-top: -0.8px; /* Reduce space above "Languages" subheading */
+  margin-bottom: 8px; /* Reduce space below "Languages" subheading */
+}
+
+.about-card.skills-card .about-card-body ul {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.about-card.skills-card .about-card-body li {
+  margin-bottom: 4px; /* Reduce space between list items */
+  padding: 0; /* Remove padding */
+  line-height: 0.9; /* Reduce line height for tighter spacing */
+  list-style-type: disc; /* Remove bullet points if needed */
+}
+
+/* Projects card specific styles */
+.about-card.projects-card .about-card-body {
+  padding: 0; /* Remove padding inside the card body */
+}
+
+.about-card.projects-card .about-card-body h3 {
+  margin-top: -0.8px; /* Reduce space above "Machine Learning" subheading */
+  margin-bottom: 8px; /* Reduce space below "Machine Learning" subheading */
+}
+
+.about-card.projects-card .about-card-body ul {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.about-card.projects-card .about-card-body li {
+  margin-bottom: 8px; /* Reduce space between list items */
+  list-style-type: disc; /* Remove bullet points if needed */
+}
+
+/* Coursework card specific styles */
+.about-card.coursework-card .about-card-body h3 {
+  margin-top: -0.5px; /* Reduce space above "Languages" subheading */
+  margin-bottom: 8px; /* Reduce space below "Languages" subheading */
+}
+
+.about-card.coursework-card .about-card-body ul {
+  padding: 0; /* Keep default padding or adjust as needed */
+  margin: 0; /* Keep default margin or adjust as needed */
+}
+
+.about-card.coursework-card .about-card-body li {
+  margin-bottom: 4px; /* Keep default spacing or adjust as needed */
+  padding: 0; /* Keep default padding or adjust as needed */
+  line-height: 0.9;
+  list-style-type: disc; /* Remove bullet points if needed */
+}
+
+@keyframes fly-in {
+  from {
+    transform: translateX(-100%); /* Start from left */
     opacity: 0;
-    animation: fly-in 1s ease-out forwards;
-    margin-left: 15%;
-    backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 2; /* Above the background and fade overlay */
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
-  /* Hover effect for the card */
-  .about-card:hover {
-    box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
-    transform: translateY(-5px);
+  to {
+    transform: translateX(0); /* End at center */
+    opacity: 1;
   }
-  
-  /* Card Header */
-  .about-card-header {
-    padding: 0.5px;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    background: transparent;
+}
+
+/* Cube spinner section */
+.about-stage-cube-cont {
+  width: 50%;
+  height: 100vh; /* Ensure it covers the full viewport height */
+  top: 0;
+  padding-top: 18%;
+  margin-left: 0;
+  position: fixed; /* Use fixed positioning to keep it in place */
+  right: 0;
+  overflow: visible; /* Ensure the cube is not cut off */
+  z-index: 3; /* Ensure the cube is above everything */
+}
+
+.about-cubespinner {
+  animation-name: spincube;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+  transform-style: preserve-3d;
+  transform-origin: 100px 100px 0;
+  margin-left: calc(50% - 100px);
+}
+
+.about-cubespinner div {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 20px solid #efa158;
+  background: rgba(208, 116, 46, 0.8);
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
+}
+
+/* Cube faces */
+.about-face1 {
+  transform: translateZ(100px);
+  color: solid #ff7e5f;
+}
+
+.about-face2 {
+  transform: rotateY(90deg) translateZ(100px);
+  color: solid #feb47b;
+}
+
+.about-face3 {
+  transform: rotateY(90deg) rotateX(90deg) translateZ(100px);
+  color: solid #61DBFB;
+}
+
+.about-face4 {
+  transform: rotateY(180deg) rotateZ(90deg) translateZ(100px);
+  color: solid #2496ED;
+}
+
+.about-face5 {
+  transform: rotateY(-90deg) rotateZ(90deg) translateZ(100px);
+  color: solid #F0DB4F;
+}
+
+.about-face6 {
+  transform: rotateX(-90deg) translateZ(100px);
+  color: solid #ff7e5f;
+}
+
+/* Cube animation */
+@keyframes spincube {
+  from, to {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   }
-  
-  /* Reduce space between "About Me" heading and paragraph */
-  .about-card.about-me-card h2 {
-    margin-bottom: 0px; /* Reduce space below the heading */
+  16% {
+    transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
   }
-  
-  .about-card.about-me-card p {
-    margin-top: 0 px; /* Reduce space above the paragraph */
+  33% {
+    transform: rotateY(-90deg) rotateZ(90deg);
   }
-  
-  /* Skills card specific styles */
-  .about-card.skills-card .about-card-body {
-    padding: 0; /* Remove padding inside the card body */
+  50% {
+    transform: rotateY(-180deg) rotateZ(90deg);
   }
-  
-  .about-card.skills-card .about-card-body h3 {
-    margin-top: -.8px; /* Reduce space above "Languages" subheading */
-    margin-bottom: 8px; /* Reduce space below "Languages" subheading */
+  66% {
+    transform: rotateY(-270deg) rotateZ(90deg);
   }
-  
-  .about-card.skills-card .about-card-body ul {
-    padding: 3; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+  83% {
+    transform: rotateX(90deg);
   }
-  
-  .about-card.skills-card .about-card-body li {
-    margin-bottom: 4px; /* Reduce space between list items */
-    padding: 0; /* Remove padding */
-    line-height: 0.9; /* Reduce line height for tighter spacing */
-    list-style-type: disc; /* Remove bullet points if needed */
-  }
-  
-  /* projects card specific styles */
-  .about-card.projects-card .about-card-body {
-    padding: 0; /* Remove padding inside the card body */
-  }
-  
-  .about-card.projects-card .about-card-body h3 {
-    margin-top: -.8px; /* Reduce space above "Machine Learning" subheading */
-    margin-bottom: 8px; /* Reduce space below "Machine Learning" subheading */
-  }
-  
-  .about-card.projects-card .about-card-body ul {
-    padding: 2.5; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-  }
-  
-  .about-card.projects-card .about-card-body li {
-    margin-bottom: 8px; /* Reduce space between list items */
-    list-style-type: disc; /* Remove bullet points if needed */
-  }
-  
-  /* coursework card specific styles */
-  .about-coursework-card .about-card-body h3 {
-    margin-top: -.5px; /* Reduce space above "Languages" subheading */
-    margin-bottom: 8px; /* Reduce space below "Languages" subheading */
-  }
-  
-  .about-card.coursework-card .about-card-body ul {
-    padding: 3; /* Keep default padding or adjust as needed */
-    margin: 0; /* Keep default margin or adjust as needed */
-  }
-  
-  .about-card.coursework-card .about-card-body li {
-    margin-bottom: 4px; /* Keep default spacing or adjust as needed */
-    padding: 0; /* Keep default padding or adjust as needed */
-    line-height: 0.9;
-    list-style-type: disc; /* Remove bullet points if needed */
-  }
-  
-  @keyframes fly-in {
-    from {
-      transform: translateX(-100%); /* Start from left */
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0); /* End at center */
-      opacity: 1; 
-    }
-  }
-  
-  /* Cube spinner section */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 1200px) {
   .about-stage-cube-cont {
-    width: 50%;
-    height: 100%;
-    top: 0;
-    padding-top: 18%;
-    margin-left: 0;
-    position: absolute;
-    right: 0;
-    overflow: hidden;
-    z-index: 3; /* Ensure the cube is above everything */
+    position: relative; /* Change to relative positioning for smaller screens */
+    width: 100%; /* Full width for smaller screens */
+    height: auto; /* Auto height to fit content */
+    padding-top: 10%; /* Adjust padding for smaller screens */
+    margin-bottom: 40px; /* Add margin to separate from other content */
+    margin-left: 150px;
+    overflow: visible; /* Ensure the cube is not cut off */
   }
-  
+
   .about-cubespinner {
-    animation-name: spincube;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-duration: 12s;
-    transform-style: preserve-3d;
-    transform-origin: 100px 100px 0;
-    margin-left: calc(50% - 100px);
+    margin-left: auto; /* Center the cube horizontally */
+    margin-right: auto;
   }
-  
-  .about-cubespinner div {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border: 20px solid #efa158;
-    background: rgba(208, 116, 46, 0.8);
-    font-size: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
-  }
-  
-  /* Cube faces */
-  .about-face1 {
-    transform: translateZ(100px);
-    color: solid #ff7e5f;
-  }
-  
-  .about-face2 {
-    transform: rotateY(90deg) translateZ(100px);
-    color: solid #feb47b;
-  }
-  
-  .about-face3 {
-    transform: rotateY(90deg) rotateX(90deg) translateZ(100px);
-    color: solid #61DBFB;
-  }
-  
-  .about-face4 {
-    transform: rotateY(180deg) rotateZ(90deg) translateZ(100px);
-    color: solid #2496ED;
-  }
-  
-  .about-face5 {
-    transform: rotateY(-90deg) rotateZ(90deg) translateZ(100px);
-    color: solid #F0DB4F;
-  }
-  
-  .about-face6 {
-    transform: rotateX(-90deg) translateZ(100px);
-    color: solid #ff7e5f;
-  }
-  
-  /* Cube animation */
-  @keyframes spincube {
-    from, to {
-      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-    16% {
-      transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
-    }
-    33% {
-      transform: rotateY(-90deg) rotateZ(90deg);
-    }
-    50% {
-      transform: rotateY(-180deg) rotateZ(90deg);
-    }
-    66% {
-      transform: rotateY(-270deg) rotateZ(90deg);
-    }
-    83% {
-      transform: rotateX(90deg);
-    }
-  }
+}
