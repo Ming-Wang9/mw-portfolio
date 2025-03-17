@@ -116,12 +116,12 @@
 .contact-form textarea {
   width: 100%;
   max-width: 100%; /* Ensure the width is not too wide */
-  border: 0;
+  border: 3px solid #ffffff;
   background-color: #0f4866; /* Message box color */
   height: 50px; /* Same height as input fields */
   font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   padding: 0 20px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -176,14 +176,6 @@
   color: #fff !important; /* Ensure the text color stays white */
 }
 
-/* Ensure the input fields and text area don't show hover effect */
-.contact-form input[type="text"]:hover,
-.contact-form input[type="email"]:hover,
-.contact-form textarea:hover {
-  background-color: #0f4866; /* Keep the background the same */
-  color: #fff; 
-  border-color: #0f4866; 
-}
 
 /* Animations */
 @keyframes fadeInUp {
