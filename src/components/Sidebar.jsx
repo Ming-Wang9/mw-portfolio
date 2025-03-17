@@ -160,9 +160,9 @@ const Sidebar = () => {
       <div className={`page-content ${isLoading ? 'hidden' : 'visible'}`}>
         {/* Mobile Menu for small screens */}
         {isMobile && (
-          <div className="mobile-menu">
+          <div className={`mobile-menu ${currentThemeClass}`}>
             <button 
-              className="menu-toggle" 
+              className={`menu-toggle ${currentThemeClass}`} 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-label="Navigation menu"
@@ -175,7 +175,7 @@ const Sidebar = () => {
             </button>
             
             {isMenuOpen && (
-              <div className="mobile-dropdown">
+              <div className={`mobile-dropdown ${currentThemeClass}`}>
                 {navItems.map((item, index) => (
                   item.isResume || item.isExternal ? (
                     <a
