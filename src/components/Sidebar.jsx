@@ -108,7 +108,7 @@ const Sidebar = () => {
 
       {/* Sidebar for larger screens */}
       <nav className={`sidebar ${currentThemeClass}`}>
-        <div className="sidebar-logo">
+        <div className={`sidebar-logo ${location.pathname === '/' ? 'home-logo' : ''}`}>
           <Link 
             to="/" 
             onClick={() => handleLinkClick("/")} // Handle logo click

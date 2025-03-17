@@ -36,6 +36,15 @@ const Home = () => {
               CONTACT ME
             </Link>
           </div>
+
+          {/* Logo Below the Buttons */}
+          <div className="home-logo-container">
+            <img 
+              src="/media/home_logo.png" // Path to your logo
+              alt="Logo" 
+              className="home-logo" 
+            />
+          </div>
         </div>
       </div>
     </div>
