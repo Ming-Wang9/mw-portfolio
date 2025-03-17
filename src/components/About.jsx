@@ -80,6 +80,21 @@ const About = () => {
         </div>
         <div className="about-card-body">
           <div className="about-card-section">
+            <h3>Personal Portfolio</h3>
+            <ul>
+              <li>Developed a responsive personal website using React to showcase projects and experience with a focus on clean UI/UX design</li>
+              <li>Utilized cross-device compatibility and seamless navigation, allowing users to access the site effortlessly on desktops, tablets, and
+              mobile devices</li>
+            </ul>
+          </div>
+          <div className="about-card-section">
+            <h3>CollegeMate</h3>
+            <ul>
+              <li>Created a real-time cross-platform chat platform for university students using React, enabling seamless communication across multiple chatrooms and responsive design with Bootstrap</li>
+              <li>Implemented secure user authentication workflows, including registration, login, and logout, utilizing JWT for token-based security and data protection</li>
+            </ul>
+          </div>
+          <div className="about-card-section">
             <h3>Machine Learning</h3>
             <ul>
               <li>Enhanced decision-making speed by 25% in Tic-Tac-Toe using the Minimax, Alpha-Beta pruning computing via multiprocessing</li>
