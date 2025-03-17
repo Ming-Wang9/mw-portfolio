@@ -21,17 +21,27 @@
     z-index: -1; /* Place it behind the content */
   }
   
-  /* Introduction Paragraph */
-  .intro-paragraph {
-    max-width: 1000px;
-    margin: 10px auto;
-    padding: 20px;
-    font-size: 30px; /* Larger font size */
-    font-weight: 700; /* Bold text */
-    color: #ffffff; /* White text */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    line-height: 1.6;
-  }
+/* Flex Container for Paragraph and Logo */
+.intro-container {
+  display: flex;
+  align-items: center; /* Vertically center the logo and text */
+  justify-content: flex-start; /* Align items to the left */
+  max-width: 1200px; /* Match the width of the sports container */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+}
+
+/* Left-Aligned Paragraph */
+.intro-paragraph {
+  max-width: 800px; /* Limit paragraph width */
+  font-size: 30px; /* Larger font size */
+  font-weight: 700; /* Bold text */
+  color: #ffffff; /* White text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  line-height: 1.6;
+  text-align: left; /* Left-align the text */
+  margin-right: 20px; /* Space between paragraph and logo */
+}
   
   /* Sports Container */
   .sports-container {
@@ -171,6 +181,25 @@
     line-height: 1.6;
     margin: 0;
   }
+
+/* Logo Container */
+.athletic-logo-container {
+  margin-top: 2rem; /* Space between the text and the logo */
+  text-align: center; /* Center the logo horizontally */
+}
+
+/* Logo Image */
+.athletic-logo {
+  width: 250px; /* Adjust the size as needed */
+  height: auto;
+  opacity: 0.9; /* Slightly transparent */
+  transition: opacity 0.3s ease;
+}
+
+.athletic-logo:hover {
+  opacity: 1; /* Fully opaque on hover */
+}
+
   
   /* Responsive Design */
   @media screen and (max-width: 768px) {

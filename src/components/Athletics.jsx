@@ -74,12 +74,23 @@ const Athletic = () => {
 
   return (
     <div className="athletic-page">
-      {/* Introduction Paragraph */}
-      <div className="intro-paragraph">
-        <p>
-          I always have an Olympics dream. I was so close to the Olympics stage... however, I was only a substitute on my team.
-          But nothing is going to stop me from being an adventure and explorer!
-        </p>
+      {/* Introduction Paragraph and Logo */}
+      <div className="intro-container">
+        <div className="intro-paragraph">
+          <p>
+            I always have an Olympics dream. I was so close to the Olympics stage... however, I was only a substitute on my team.
+            But nothing is going to stop me from being an adventure and explorer!
+          </p>
+        </div>
+
+        {/* Logo on the Same Line */}
+        <div className="athletic-logo-container">
+          <img 
+            src="/media/athletics_logo.png" // Path to your athletics logo
+            alt="Logo" 
+            className="athletic-logo" 
+          />
+        </div>
       </div>
 
       {/* Sports Cards */}
