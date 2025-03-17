@@ -8,18 +8,19 @@ const Sidebar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
   const location = useLocation();
 
   const pageThemes = {
-    '/': 'sidebar-home', 
-    '/about': 'sidebar-about',
-    '/contact': 'sidebar-contact',
-    '/linkedin': 'sidebar-linkedin',
-    '/github': 'sidebar-github',
-    '/athletics': 'sidebar-athletics'
+    '/': { className: 'sidebar-home', bgColor: '#000000' }, // Home page theme
+    '/about': { className: 'sidebar-about', bgColor: '#f68d3d' }, // About page theme
+    '/contact': { className: 'sidebar-contact', bgColor: '#377494' }, // Contact page theme
+    '/athletics': { className: 'sidebar-athletics', bgColor: '#e74c3c' } // Athletics page theme
   };
 
-  const currentThemeClass = pageThemes[location.pathname] || pageThemes['/'];
+  const currentTheme = pageThemes[location.pathname] || pageThemes['/'];
+  const currentThemeClass = currentTheme.className;
+  const currentBgColor = currentTheme.bgColor;
 
   // Dynamically determine the logo based on the current route
   const getLogoForPage = () => {
@@ -61,7 +62,22 @@ const Sidebar = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle link clicks (force page reload)
+  // Simulate loading for 1.5 seconds (duration of the spin animation)
+  useEffect(() => {
+    // Only show loading for internal pages (not external links)
+    if (!navItems.some(item => item.isExternal && location.pathname === item.path)) {
+      const timer = setTimeout(() => {
+        setIsLoading(false); // Stop loading after 1.5 seconds
+      }, 1500); // 1.5 seconds
+  
+      return () => clearTimeout(timer); // Cleanup timer
+    } else {
+      setIsLoading(false); // Immediately stop loading for external links
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]); // Disable the warning for navItems
+
+  // Handle link clicks (force page reload for internal pages)
   const handleLinkClick = (path) => {
     if (location.pathname === path) {
       // If already on the same page, force a reload
@@ -74,102 +90,119 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Sidebar for larger screens */}
-      {!isMobile && (
-        <nav className={`sidebar ${currentThemeClass}`}>
-          <div className="sidebar-logo">
-            <Link 
-              to="/" 
-              onClick={() => handleLinkClick("/")} // Handle logo click
-            >
-              <img 
-                src={getLogoForPage()} 
-                alt="Logo" 
-                className="logo-image" 
-              />
-            </Link>
+      {/* Loading overlay (only for internal pages) */}
+      {isLoading && !navItems.some(item => item.isExternal && location.pathname === item.path) && (
+        <div 
+          className="loading-overlay" 
+          style={{ backgroundColor: currentBgColor }} // Set background color dynamically
+        >
+          <div className="loading-spinner">
+            <img 
+              src={getLogoForPage()} 
+              alt="Loading Logo" 
+              className="spinning-logo" 
+            />
           </div>
-          <ul className="sidebar-links">
-            {navItems.map((item, index) => (
-              <li 
-                key={index}
-                onMouseEnter={() => setHoveredItem(index)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                {item.isResume || item.isExternal ? (
-                  <a 
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.text}
-                  >
-                    {hoveredItem === index ? 
-                      <span className="icon-text">{item.text}</span> : 
-                      item.icon
-                    }
-                  </a>
-                ) : (
-                  <Link 
-                    to={item.path} 
-                    onClick={() => handleLinkClick(item.path)}
-                    aria-label={item.text}
-                  >
-                    {hoveredItem === index ? 
-                      <span className="icon-text">{item.text}</span> : 
-                      item.icon
-                    }
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
-
-      {/* Mobile Menu for small screens */}
-      {isMobile && (
-        <div className={`mobile-menu ${currentThemeClass}`}>
-          <button 
-            className="menu-toggle" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-expanded={isMenuOpen}
-            aria-label="Navigation menu"
-          >
-            <div className="hamburger-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-          
-          {isMenuOpen && (
-            <div className="mobile-dropdown">
-              {navItems.map((item, index) => (
-                item.isResume || item.isExternal ? (
-                  <a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mobile-link"
-                  >
-                    {item.text}
-                  </a>
-                ) : (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="mobile-link"
-                    onClick={() => handleLinkClick(item.path)}
-                  >
-                    {item.text}
-                  </Link>
-                )
-              ))}
-            </div>
-          )}
         </div>
       )}
+
+      {/* Sidebar for larger screens */}
+      <nav className={`sidebar ${currentThemeClass}`}>
+        <div className="sidebar-logo">
+          <Link 
+            to="/" 
+            onClick={() => handleLinkClick("/")} // Handle logo click
+          >
+            <img 
+              src={getLogoForPage()} 
+              alt="Logo" 
+              className="logo-image" 
+            />
+          </Link>
+        </div>
+        <ul className="sidebar-links">
+          {navItems.map((item, index) => (
+            <li 
+              key={index}
+              onMouseEnter={() => setHoveredItem(index)}
+              onMouseLeave={() => setHoveredItem(null)}
+            >
+              {item.isResume || item.isExternal ? (
+                <a 
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.text}
+                >
+                  {hoveredItem === index ? 
+                    <span className="icon-text">{item.text}</span> : 
+                    item.icon
+                  }
+                </a>
+              ) : (
+                <Link 
+                  to={item.path} 
+                  onClick={() => handleLinkClick(item.path)}
+                  aria-label={item.text}
+                >
+                  {hoveredItem === index ? 
+                    <span className="icon-text">{item.text}</span> : 
+                    item.icon
+                  }
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Page content */}
+      <div className={`page-content ${isLoading ? 'hidden' : 'visible'}`}>
+        {/* Mobile Menu for small screens */}
+        {isMobile && (
+          <div className="mobile-menu">
+            <button 
+              className="menu-toggle" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-label="Navigation menu"
+            >
+              <div className="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+            
+            {isMenuOpen && (
+              <div className="mobile-dropdown">
+                {navItems.map((item, index) => (
+                  item.isResume || item.isExternal ? (
+                    <a
+                      key={index}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mobile-link"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="mobile-link"
+                      onClick={() => handleLinkClick(item.path)}
+                    >
+                      {item.text}
+                    </Link>
+                  )
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </>
   );
 };

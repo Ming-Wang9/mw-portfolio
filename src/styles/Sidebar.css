@@ -221,6 +221,59 @@
 .mobile-menu.sidebar-athletics .menu-toggle:hover .hamburger-icon span { background-color: #8B0000; }
 
 /* =========================== */
+/* Logo Styles */
+/* =========================== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above everything else */
+}
+
+/* Loading spinner container */
+.loading-spinner {
+  text-align: center;
+}
+
+/* Spinning logo animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(400deg); /* One and a half rotations */
+  }
+}
+
+.spinning-logo {
+  width: 300px; /* Adjust the size as needed */
+  height: auto;
+  animation: spin 1.7s linear; /* 2 seconds for one and a half rotations */
+}
+
+/* Page content fade-in effect */
+.page-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page-content.visible {
+  opacity: 1;
+}
+
+.page-content.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interactions while hidden */
+}
+
+
+
+/* =========================== */
 /* Responsive Styles */
 /* =========================== */
 @media (max-width: 1279px) { /* Adjusted breakpoint */
