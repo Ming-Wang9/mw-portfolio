@@ -197,7 +197,6 @@
   }
 }
 
-/* Add media queries for responsiveness */
 @media (max-width: 768px) {
   .text-zone {
     padding: 10px;
