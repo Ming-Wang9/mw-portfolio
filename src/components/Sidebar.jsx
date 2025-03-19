@@ -43,7 +43,7 @@ const Sidebar = () => {
       isExternal: true, 
       icon: <FaLinkedin />, 
       text: "LinkedIn",
-      href: "https://www.linkedin.com/in/ming-wang-b08485253/?trk=opento_sprofile_topcard" 
+      href: "https://www.linkedin.com/in/ming-wang-b08485253/" 
     },
     { 
       isExternal: true, 

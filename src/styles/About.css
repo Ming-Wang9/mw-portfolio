@@ -116,7 +116,6 @@
   padding: 15px;
   width: 45%;
   max-width: 500px;
-  box-shadow: 0 0 10px 5px rgba(255, 81, 0, 0.5);
   position: relative;
   overflow: hidden;
   opacity: 0;
@@ -233,7 +232,7 @@
   top: 0;
   padding-top: 18%;
   margin-left: 0;
-  position: fixed; /* Use fixed positioning to keep it in place */
+  position: absolute; /* Use fixed positioning to keep it in place */
   right: 0;
   overflow: visible; /* Ensure the cube is not cut off */
   z-index: 3; /* Ensure the cube is above everything */
@@ -246,7 +245,7 @@
   animation-duration: 12s;
   transform-style: preserve-3d;
   transform-origin: 100px 100px 0;
-  margin-left: calc(50% - 100px);
+  margin-left: calc(60% - 100px);
 }
 
 .about-cubespinner div {
@@ -327,7 +326,7 @@
   }
 
   .about-cubespinner {
-    margin-left: auto; /* Center the cube horizontally */
+    margin-left: calc(60% - 100px);
     margin-right: auto;
   }
 }

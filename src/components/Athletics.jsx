@@ -8,24 +8,9 @@ const sports = [
     description: "I am a foil and epee fencer — quick on my feet and even quicker with a blade!"
   },
   {
-    title: "Cyclist",
-    images: ["../media/biking_1.jpg", "../media/biking_2.jpg"], 
-    description: "Nothing beats the thrill of long-distance cycling through the Swiss mountains!"
-  },
-  {
-    title: "Hiker",
-    images: ["../media/hiking_1.jpg", "../media/hiking_2.jpg"], 
-    description: "Exploring new trails fuels my soul — the steeper, the better!"
-  },
-  {
-    title: "Paraglider",
-    images: ["../media/paragliding_1.jpg"], 
-    description: "Soaring through the skies feels like freedom!"
-  },
-  {
-    title: "Skateboarder",
-    images: ["../media/skateboard_1.jpg"], 
-    description: "Balancing on four wheels is easy — until it isn’t!"
+    title: "Surfer",
+    images: ["../media/surfing_1.jpg", "../media/surfing_2.jpg", "../media/surfing_3.jpg", "../media/surfing_4.jpg"], 
+    description: "Chasing the perfect wave — call me Moana!"
   },
   {
     title: "Short Track Speed Skater",
@@ -33,29 +18,45 @@ const sports = [
     description: "Fast turns, sharp blades — it’s a race against time and gravity!"
   },
   {
+    title: "Cyclist",
+    images: ["../media/biking_1.jpg", "../media/biking_2.jpg"], 
+    description: "Nothing beats the thrill of long-distance cycling through the Swiss mountains!"
+  },
+  {
+    title: "Hiker",
+    images: ["../media/hiking_1.jpg", "../media/hiking_2.jpg"], 
+    description: "Exploring trails fuels my soul — the steeper, the better!"
+  },
+  {
+    title: "Skateboarder",
+    images: ["../media/skateboard_1.jpg", "../media/skateboard_2.jpg"], 
+    description: "Balancing on four wheels is easy — until it isn’t!"
+  },
+  {
+    title: "Paraglider",
+    images: ["../media/paragliding_1.jpg"], 
+    description: "Soaring through the skies feels like freedom!"
+  },
+  {
     title: "Snowboarder",
     images: ["../media/snowboarding_1.jpg"], 
     description: "Carving down the slopes with the wind in my face!"
   },
-  {
-    title: "Surfer",
-    images: ["../media/surfing_1.jpg", "../media/surfing_2.jpg", "../media/surfing_3.jpg", "../media/surfing_4.jpg"], 
-    description: "Chasing the perfect wave — call me Moana!"
-  }
 ];
 
 const Athletic = () => {
-  const [expandedCard, setExpandedCard] = useState(null);
+  // Track the expanded state of each card individually
+  const [expandedCards, setExpandedCards] = useState({});
   const [currentImageIndices, setCurrentImageIndices] = useState(
     sports.reduce((acc, _, index) => ({ ...acc, [index]: 0 }), {})
   );
 
+  // Toggle the expanded state of a specific card
   const toggleCard = (index) => {
-    if (expandedCard === index) {
-      setExpandedCard(null); 
-    } else {
-      setExpandedCard(index); 
-    }
+    setExpandedCards((prevExpandedCards) => ({
+      ...prevExpandedCards,
+      [index]: !prevExpandedCards[index], // Toggle the expanded state for this card
+    }));
   };
 
   const nextImage = (images, index) => {
@@ -98,7 +99,7 @@ const Athletic = () => {
         {sports.map((sport, index) => (
           <div
             key={index}
-            className={`sport-card ${expandedCard === index ? 'expanded' : ''}`}
+            className={`sport-card ${expandedCards[index] ? 'expanded' : ''}`}
           >
             {/* Carousel for Images */}
             <div className="carousel">
@@ -141,7 +142,7 @@ const Athletic = () => {
             </div>
 
             {/* Expanded Description */}
-            {expandedCard === index && (
+            {expandedCards[index] && (
               <div className="sport-description">
                 <p>{sport.description}</p>
               </div>
