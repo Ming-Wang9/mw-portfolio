@@ -44,29 +44,26 @@ const About = () => {
             </ul>
           </div>
           <div className="about-card-section">
-            <h3>Version Control</h3>
+            <h3>Frontend Design</h3>
             <ul>
               <li>Git</li>
-              <li>GitLab</li>
+              <li>React</li>
+              <li>Npm</li>
+              <li>Angular</li>
+              <li>bootstrap</li>
+              <li>HTML/CSS</li>
+              <li>Figma</li>
             </ul>
           </div>
           <div className="about-card-section">
-            <h3>Operating Systems</h3>
+            <h3>Backend Technologies</h3>
             <ul>
               <li>Linux</li>
-              <li>Windows</li>
-            </ul>
-          </div>
-          <div className="about-card-section">
-            <h3>Tools & Libraries</h3>
-            <ul>
               <li>Docker</li>
               <li>Spark</li>
-              <li>React</li>
               <li>RPC</li>
+              <li>Cassandra</li>
               <li>Google Cloud</li>
-              <li>Tableau</li>
-              <li>ArcGIS Pro</li>
             </ul>
           </div>
         </div>
