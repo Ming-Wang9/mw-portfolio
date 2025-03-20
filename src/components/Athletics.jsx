@@ -4,7 +4,7 @@ import "../styles/Athletic.css";
 const sports = [
   {
     title: "Fencer",
-    images: ["../media/fencing_1.jpg", "../media/fencing_2.jpg", "../media/fencing_3.jpg", "../media/fencing_4.jpg"], 
+    images: ["../media/fencing_4.jpg", "../media/fencing_2.jpg", "../media/fencing_3.jpg", "../media/fencing_1.jpg"], 
     description: "I am a foil and epee fencer — quick on my feet and even quicker with a blade!"
   },
   {
@@ -14,7 +14,7 @@ const sports = [
   },
   {
     title: "Short Track Speed Skater",
-    images: ["../media/skating_1.jpg", "../media/skating_2.jpg", "../media/skating_3.jpg"], 
+    images: ["../media/skating_3.jpg", "../media/skating_2.jpg", "../media/skating_1.jpg"], 
     description: "Fast turns, sharp blades — it’s a race against time and gravity!"
   },
   {
