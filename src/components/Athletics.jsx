@@ -9,7 +9,7 @@ const sports = [
   },
   {
     title: "Surfer",
-    images: ["../media/surfing_1.jpg", "../media/surfing_2.jpg", "../media/surfing_3.jpg", "../media/surfing_4.jpg"], 
+    images: ["../media/surfing_3.jpg", "../media/surfing_1.jpg", "../media/surfing_2.jpg", "../media/surfing_4.jpg"], 
     description: "Chasing the perfect wave — call me Moana!"
   },
   {
