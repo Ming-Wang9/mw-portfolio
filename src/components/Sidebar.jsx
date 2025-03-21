@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import { FaHome, FaUser, FaEnvelope, FaLinkedin, FaGithub, FaNewspaper } from "react-icons/fa";
+import { FaHome, FaUser, FaEnvelope, FaLinkedin, FaGithub} from "react-icons/fa";
 import { TbOlympics } from "react-icons/tb";  
 import "../styles/Sidebar.css";
 
@@ -32,12 +32,12 @@ const Sidebar = () => {
   const navItems = [
     { path: "/", icon: <FaHome />, text: "Home" },
     { path: "/about", icon: <FaUser />, text: "About" },
-    { 
-      isResume: true, 
-      icon: <FaNewspaper />, 
-      text: "Resume",
-      href: "/media/MingWang_Resume.pdf" 
-    },
+    // { 
+    //   isResume: true, 
+    //   icon: <FaNewspaper />, 
+    //   text: "Resume",
+    //   href: "/media/MingWang_Resume.pdf" 
+    // },
     { path: "/contact", icon: <FaEnvelope />, text: "Contact" },
     { 
       isExternal: true, 

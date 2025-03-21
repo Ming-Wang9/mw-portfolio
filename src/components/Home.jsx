@@ -23,18 +23,34 @@ const Home = () => {
             Python | Java | JavaScript | SQL | C++
           </div>
 
+          {/* Button Container */}
           <div className="home-button-container">
-            <a
-              href="https://github.com/Ming-Wang9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home-button"
-            >
-              MY PROJECTS
-            </a>
-            <Link to="/contact" className="home-button">
-              CONTACT ME
-            </Link>
+            {/* First Row */}
+            <div className="home-button-row">
+              <a
+                href="https://github.com/Ming-Wang9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-button"
+              >
+                MY PROJECTS
+              </a>
+              <Link to="/contact" className="home-button">
+                CONTACT ME
+              </Link>
+            </div>
+
+            {/* Second Row */}
+            <div className="home-button-row">
+              <a
+                href="/media/MingWang_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-button"
+              >
+                RESUME
+              </a>
+            </div>
           </div>
 
           {/* Logo Below the Buttons */}

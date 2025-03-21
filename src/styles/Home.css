@@ -81,14 +81,21 @@
 
 .home-button-container {
   display: flex;
-  gap: 2rem;
+  flex-direction: column; /* Stack rows vertically */
+  gap: 1rem; /* Space between rows */
   margin-top: 2rem;
+}
+
+.home-button-row {
+  display: flex;
+  gap: 2rem; /* Space between buttons in the same row */
+  justify-content: flex-start; /* Align buttons to the left */
 }
 
 .home-button {
   background: transparent;
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem; /* Adjust padding if needed */
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
@@ -96,6 +103,9 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  width: 200px; /* Fixed width for all buttons */
+  text-align: center; /* Center text inside buttons */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .home-button:hover {
